@@ -1,0 +1,13 @@
+#Made by BGHDNetwork(Noodles)
+#=======================================================
+#Plugin Page: https://www.spigotmc.org/resources/46693
+#=======================================================
+Update:
+  Enabled: true
+#nv.update
+#Enables if there is a message on-join when the plugin is outdated.
+#=======================================================
+Messages:
+  Enabled: '&eNight Vision &a&lEnabled!'
+  Disabled: '&eNight Vision &c&lDisabled!'
+#=======================================================

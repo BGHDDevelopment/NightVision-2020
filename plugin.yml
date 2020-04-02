@@ -1,0 +1,7 @@
+name: NightVision
+main: me.noodles.nv.MainNightV
+author: BGHDNetwork
+version: 0.2
+commands:
+   nv:
+      description: Enable or Disable NV
