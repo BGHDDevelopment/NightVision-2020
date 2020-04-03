@@ -12,8 +12,8 @@ public class CommandNV implements CommandExecutor {
 	String Disabled;
 	
 	 public CommandNV() {
-	        this.Enabled = ChatColor.translateAlternateColorCodes('&', MainNightV.getPlugin().getConfig().getString("Messages.Enabled"));
-	        this.Disabled = ChatColor.translateAlternateColorCodes('&', MainNightV.getPlugin().getConfig().getString("Messages.Disabled"));
+	        this.Enabled = ChatColor.translateAlternateColorCodes('&', NightVision.getPlugin().getConfig().getString("Messages.Enabled"));
+	        this.Disabled = ChatColor.translateAlternateColorCodes('&', NightVision.getPlugin().getConfig().getString("Messages.Disabled"));
 	
 	 } 
 	

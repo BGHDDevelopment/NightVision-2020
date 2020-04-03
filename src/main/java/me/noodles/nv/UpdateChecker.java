@@ -4,11 +4,11 @@ import java.io.*;
 
 public class UpdateChecker
 {
-    public MainNightV plugin;
+    public NightVision plugin;
     public String version;
     
     
-    public UpdateChecker(MainNightV plugin) {
+    public UpdateChecker(NightVision plugin) {
         this.plugin = plugin;
         this.version = this.getLatestVersion();
     }
