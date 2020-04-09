@@ -14,14 +14,14 @@ public class UpdateJoinEvent implements Listener
     public void onJoin(final PlayerJoinEvent e) {
     	Player p = e.getPlayer();
     	if (p.hasPermission("nv.update")) {
-    		if (MainNightV.getPlugin().getConfig().getBoolean("Update.Enabled") == true){
-    		this.checker = new UpdateChecker(MainNightV.plugin);
+    		if (NightVision.getPlugin().getConfig().getBoolean("Update.Enabled") == true){
+    		this.checker = new UpdateChecker(NightVision.plugin);
                         if (this.checker.isConnected()) {
                             if (this.checker.hasUpdate()) {
                             	p.sendMessage(ChatColor.GRAY + "=========================");
                                 p.sendMessage(ChatColor.RED + "NightVision is outdated!");
                                 p.sendMessage(ChatColor.GREEN + "Newest version: " + this.checker.getLatestVersion());
-                                p.sendMessage(ChatColor.RED + "Your version: " + MainNightV.plugin.getDescription().getVersion());
+                                p.sendMessage(ChatColor.RED + "Your version: " + NightVision.plugin.getDescription().getVersion());
                                 p.sendMessage(ChatColor.GRAY + "=========================");
                             }
                         }               
