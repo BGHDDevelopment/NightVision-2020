@@ -2,17 +2,15 @@ package me.noodles.nv;
 import java.net.*;
 import java.io.*;
 
-public class UpdateChecker
-{
+public class UpdateChecker {
     public NightVision plugin;
     public String version;
-    
-    
+
     public UpdateChecker(NightVision plugin) {
         this.plugin = plugin;
         this.version = this.getLatestVersion();
     }
-    
+
     @SuppressWarnings("unused")
 	public String getLatestVersion() {
         try {
@@ -41,4 +39,5 @@ public class UpdateChecker
     public boolean hasUpdate() {
         return !this.version.equals(this.plugin.getDescription().getVersion());
     }
+
 }
