@@ -6,3 +6,4 @@ website: http://bghddevelopment.com/
 commands:
   nv:
     description: Enable or Disable NV
+    usage: /<command>

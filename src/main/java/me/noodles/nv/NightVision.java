@@ -1,5 +1,6 @@
 package me.noodles.nv;
 
+import me.noodles.nv.commands.NVCommand;
 import me.noodles.nv.listeners.UpdateJoinEvent;
 import me.noodles.nv.utilities.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -22,7 +23,7 @@ public final class NightVision extends JavaPlugin implements Listener {
         this.reloadConfig();
         registerEvents((Plugin)this, new UpdateJoinEvent(this));
         registerEvents(this, this);
-        this.getCommand("nv").setExecutor((CommandExecutor)new CommandNV());
+        this.getCommand("nv").setExecutor(new NVCommand(this));
         this.getLogger().info("NightVision  V" + VarUtilType.getVersion() + " started!");
         this.setEnabled(true);
         this.getLogger().info("NightVision V" + VarUtilType.getVersion() + " checking for updates...");
