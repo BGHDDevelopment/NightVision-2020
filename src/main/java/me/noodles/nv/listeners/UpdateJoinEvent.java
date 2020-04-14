@@ -39,4 +39,5 @@ public final class UpdateJoinEvent implements Listener {
     private NightVision getPlugin() {
         return plugin;
     }
+
 }

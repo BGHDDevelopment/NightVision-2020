@@ -4,29 +4,29 @@ import me.noodles.nv.commands.NVCommand;
 import me.noodles.nv.listeners.UpdateJoinEvent;
 import me.noodles.nv.utilities.UpdateChecker;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class NightVision extends JavaPlugin implements Listener {
-    public static NightVision plugin;
-    public static Plugin plugin2;
-    private UpdateChecker checker;
+public final class NightVision extends JavaPlugin {
 
     public void onEnable() {
-        NightVision.plugin = this;
-        final PluginDescriptionFile VarUtilType = this.getDescription();
-        this.getLogger().info("NightVision  V" + VarUtilType.getVersion() + " starting...");
+        final String version = this.getDescription().getVersion();
+
+        this.getLogger().info(String.format("NightVision v%s starting ...", version));
+
         this.saveDefaultConfig();
         this.reloadConfig();
-        registerEvents((Plugin)this, new UpdateJoinEvent(this));
-        registerEvents(this, this);
+
+        this.getLogger().info(String.format("NightVision v%s loading commands ...", version));
+
         this.getCommand("nv").setExecutor(new NVCommand(this));
-        this.getLogger().info("NightVision  V" + VarUtilType.getVersion() + " started!");
-        this.setEnabled(true);
-        this.getLogger().info("NightVision V" + VarUtilType.getVersion() + " checking for updates...");
+
+        this.getLogger().info(String.format("NightVision v%s loading events ...", version));
+
+        this.registerEvents(this, new UpdateJoinEvent(this));
+
+        this.getLogger().info(String.format("NightVision v%s started ...", version));
 
         if (getConfig().getBoolean("CheckForUpdates.Enabled", true)) {
             new UpdateChecker(this, 46693).getLatestVersion(remoteVersion -> {
@@ -42,19 +42,10 @@ public final class NightVision extends JavaPlugin implements Listener {
         }
     }
 
-    public static void registerEvents(final Plugin plugin, final Listener... listeners) {
+    private void registerEvents(final Plugin plugin, final Listener... listeners) {
         for (final Listener listener : listeners) {
             Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
         }
-    }
-
-    @SuppressWarnings({ "unchecked", "rawtypes"})
-    public static NightVision getPlugin() {
-        return (NightVision)getPlugin((Class)NightVision.class);
-    }
-
-    public static Plugin getPlugin2() {
-        return (Plugin)NightVision.plugin;
     }
 
 }
