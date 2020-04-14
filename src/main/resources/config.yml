@@ -15,3 +15,6 @@ Messages:
   Enabled: '&eNight Vision &a&lEnabled!'
   Disabled: '&eNight Vision &c&lDisabled!'
 #=======================================================
+#Plugin Commands:
+# /nv - nv.use
+# /nv reload - nv.reload
