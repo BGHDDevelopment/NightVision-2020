@@ -1,5 +1,7 @@
 package me.noodles.nv;
 
+import me.noodles.nv.listeners.UpdateJoinEvent;
+import me.noodles.nv.utilities.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -18,27 +20,24 @@ public final class NightVision extends JavaPlugin implements Listener {
         this.getLogger().info("NightVision  V" + VarUtilType.getVersion() + " starting...");
         this.saveDefaultConfig();
         this.reloadConfig();
-        registerEvents((Plugin)this, new UpdateJoinEvent());
+        registerEvents((Plugin)this, new UpdateJoinEvent(this));
         registerEvents(this, this);
         this.getCommand("nv").setExecutor((CommandExecutor)new CommandNV());
         this.getLogger().info("NightVision  V" + VarUtilType.getVersion() + " started!");
         this.setEnabled(true);
         this.getLogger().info("NightVision V" + VarUtilType.getVersion() + " checking for updates...");
-        this.checker = new UpdateChecker(this);
-        if (this.checker.isConnected()) {
-            if (this.checker.hasUpdate()) {
-                getServer().getConsoleSender().sendMessage("------------------------");
-                getServer().getConsoleSender().sendMessage("NightVision is outdated!");
-                getServer().getConsoleSender().sendMessage("Newest version: " + this.checker.getLatestVersion());
-                getServer().getConsoleSender().sendMessage("Your version: " + NightVision.plugin.getDescription().getVersion());
-                getServer().getConsoleSender().sendMessage("Please Update Here: https://www.spigotmc.org/resources/46693");
-                getServer().getConsoleSender().sendMessage("------------------------");
-            }
-            else {
-                getServer().getConsoleSender().sendMessage("------------------------");
-                getServer().getConsoleSender().sendMessage("NightVision is up to date!");
-                getServer().getConsoleSender().sendMessage("------------------------");
-            }
+
+        if (getConfig().getBoolean("CheckForUpdates.Enabled", true)) {
+            new UpdateChecker(this, 46693).getLatestVersion(remoteVersion -> {
+                getLogger().info("Checking for Updates ...");
+
+                if (getDescription().getVersion().equalsIgnoreCase(remoteVersion)) {
+                    getLogger().info("No new version available");
+                } else {
+                    getLogger().warning(String.format("Newest version: %s it out! You are running version: %s", remoteVersion, getDescription().getVersion()));
+                    getLogger().warning("Please Update Here: http://www.spigotmc.org/resources/46693");
+                }
+            });
         }
     }
 
