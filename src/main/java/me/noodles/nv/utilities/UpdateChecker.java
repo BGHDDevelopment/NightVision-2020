@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.function.Consumer;
 
 public final class UpdateChecker {
-    private final String URL = "https://api.spigotmc.org/legacy/update.php?resouce=";
+    private final String URL = "https://api.spigotmc.org/legacy/update.php?resource=";
 
     private final NightVision plugin;
     private final int resourceId;
