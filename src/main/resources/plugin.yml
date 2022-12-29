@@ -1,9 +1,5 @@
 name: NightVision
-version: ${project.version}
-main: me.noodles.nv.NightVision
-authors: [BGHDDevelopment]
+version: 0.4
+main: com.bghddevelopment.nightvision.NightVision
+author: BGHDDevelopmentLLC
 website: http://bghddevelopment.com/
-commands:
-  nv:
-    description: Enable or Disable NV
-    usage: /<command> reload
